@@ -1,7 +1,8 @@
-import { JSONValue } from '../types'
+import { isNodeless, JSONValue } from '../types'
 
 export const nodeMap =
   (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONValue): JSONValue => {
-    return func(iterable)
+    if (isNodeless(iterable)) return func(iterable)
+    return null
   }
