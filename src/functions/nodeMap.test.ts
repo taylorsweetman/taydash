@@ -45,7 +45,7 @@ describe('nodeMap', () => {
   })
 
   describe('with to one function', () => {
-    const nodeMapIdentityFunc = nodeMap((_) => 1)
+    const nodeMapIdentityFunc = nodeMap(() => 1)
 
     it.each([
       [1, 1],
