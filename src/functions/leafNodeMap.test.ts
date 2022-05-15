@@ -1,9 +1,9 @@
 import { JSONArray, JSONNodeless, JSONObject, JSONValue } from '../types'
-import { nodeMap } from './nodeMap'
+import { leafNodeMap } from './leafNodeMap'
 
 describe('nodeMap', () => {
   describe('with identity function', () => {
-    const nodeMapIdentityFunc = nodeMap((x) => x)
+    const nodeMapIdentityFunc = leafNodeMap((x) => x)
 
     it.each([
       [1, 1],
@@ -45,7 +45,7 @@ describe('nodeMap', () => {
   })
 
   describe('with to one function', () => {
-    const nodeMapIdentityFunc = nodeMap(() => 1)
+    const nodeMapIdentityFunc = leafNodeMap(() => 1)
 
     it.each([
       [1, 1],

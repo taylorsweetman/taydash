@@ -1,3 +1,3 @@
-import { nodeMap } from './functions/nodeMap'
+import { leafNodeMap } from './functions/leafNodeMap'
 
-export { nodeMap }
+export { leafNodeMap }

@@ -17,18 +17,18 @@ const handleObject =
       )
     )(iterable)
 
-export const nodeMap =
+export const leafNodeMap =
   (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONValue): JSONValue => {
     if (isNodeless(iterable)) return func(iterable)
 
-    const nodeMapWithAppliedFunction = nodeMap(func)
+    const leafNodeMapWithAppliedFunction = leafNodeMap(func)
 
     if (isArray(iterable))
-      return handleArray(nodeMapWithAppliedFunction)(iterable)
+      return handleArray(leafNodeMapWithAppliedFunction)(iterable)
 
     if (isPlainObject(iterable))
-      return handleObject(nodeMapWithAppliedFunction)(iterable)
+      return handleObject(leafNodeMapWithAppliedFunction)(iterable)
 
     return null
   }
