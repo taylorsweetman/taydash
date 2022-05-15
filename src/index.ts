@@ -1,7 +1,3 @@
-export {}
+import { nodeMap } from './functions/nodeMap'
 
-const main = () => {
-  console.log('Hello, world!')
-}
-
-main()
+export { nodeMap }
