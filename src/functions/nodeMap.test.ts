@@ -27,10 +27,16 @@ describe('nodeMap', () => {
   )
 
   it.each([
-    [{ hello: { world: true } }, { hello: { world: true } }],
-    [[{ hello: { world: true } }], [{ hello: { world: true } }]],
+    [
+      { hello: { world: [true, 1, 'a'] } },
+      { hello: { world: [true, 1, 'a'] } },
+    ],
+    [
+      [{ hello: { world: true } }, 1],
+      [{ hello: { world: true } }, 1],
+    ],
   ])(
-    'should correctly use identity function on deeply nested JSONValue: %p -> %p',
+    'should correctly use identity function on deeply nested JSONValue: %j -> %j',
     (iter: JSONValue, expected: JSONValue) => {
       expect(nodeMapIdentityFunc(iter)).toEqual(expected)
     }
