@@ -1,4 +1,4 @@
-import { JSONArray, JSONNodeless, JSONObject } from '../types'
+import { JSONArray, JSONNodeless, JSONObject, JSONValue } from '../types'
 import { nodeMap } from './nodeMap'
 
 describe('nodeMap', () => {
@@ -22,6 +22,16 @@ describe('nodeMap', () => {
   ])(
     'should return empty object or list when receiving empty object or list: %s -> %s',
     (iter: JSONObject | JSONArray, expected: JSONObject | JSONArray) => {
+      expect(nodeMapIdentityFunc(iter)).toEqual(expected)
+    }
+  )
+
+  it.each([
+    [{ hello: { world: true } }, { hello: { world: true } }],
+    [[{ hello: { world: true } }], [{ hello: { world: true } }]],
+  ])(
+    'should correctly use identity function on deeply nested JSONValue: %p -> %p',
+    (iter: JSONValue, expected: JSONValue) => {
       expect(nodeMapIdentityFunc(iter)).toEqual(expected)
     }
   )
