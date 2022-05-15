@@ -4,7 +4,6 @@
   "description": "My utility functions",
   "main": "src/index.ts",
   "scripts": {
-    "start": "ts-node .",
     "compile": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 '**/*.ts'",
     "test": "jest"
