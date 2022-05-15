@@ -6,7 +6,8 @@
   "scripts": {
     "compile": "tsc --noEmit",
     "lint": "eslint --max-warnings 0 '**/*.ts'",
-    "test": "jest"
+    "test": "jest",
+    "validate": "npm run lint && npm run compile && npm run test"
   },
   "author": "Taylor Sweetman",
   "license": "ISC",
