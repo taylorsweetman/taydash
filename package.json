@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
   },
   "devDependencies": {
