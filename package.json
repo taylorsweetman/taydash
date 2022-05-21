@@ -1,6 +1,6 @@
 {
   "name": "taydash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helpful utility functions",
   "main": "src/index.ts",
   "scripts": {
@@ -11,6 +11,7 @@
   },
   "author": "Taylor Sweetman",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "lodash": "^4.17.21",
     "typescript": "^4.6.4"
