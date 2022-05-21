@@ -1,6 +1,6 @@
 {
   "name": "taydash",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Helpful utility functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,11 +10,10 @@
     "lint": "eslint --max-warnings 0 'src/**/*.ts'",
     "test": "jest",
     "validate": "npm run lint && npm run compile && npm run test && npm audit",
-    "publish": "npm run validate && npm ci && npm run build && npm publish"
+    "prep": "npm i && npm run build && npm run validate"
   },
   "author": "Taylor Sweetman",
   "license": "MIT",
-  "type": "module",
   "files": [
     "lib/**/*"
   ],
