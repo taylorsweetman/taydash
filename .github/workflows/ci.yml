@@ -16,6 +16,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+            node-version: ${{ matrix.node-version }}
+
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
@@ -30,11 +36,8 @@ jobs:
             ${{ runner.os }}-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-            node-version: ${{ matrix.node-version }}
-        - run: npm ci
+        - name: Clean Install
+          run: npm ci
 
       - name: Validate package
         run: npm run validate
