@@ -2,17 +2,22 @@
   "name": "taydash",
   "version": "1.0.3",
   "description": "Helpful utility functions",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "compile": "tsc --noEmit",
     "build": "tsc",
-    "lint": "eslint --max-warnings 0 '**/*.ts'",
+    "lint": "eslint --max-warnings 0 'src/**/*.ts'",
     "test": "jest",
-    "validate": "npm run lint && npm run compile && npm run test && npm audit"
+    "validate": "npm run lint && npm run compile && npm run test && npm audit",
+    "publish": "npm run validate && npm ci && npm run build && npm publish"
   },
   "author": "Taylor Sweetman",
   "license": "MIT",
   "type": "module",
+  "files": [
+    "lib/**/*"
+  ],
   "dependencies": {
     "lodash": "^4.17.21"
   },
