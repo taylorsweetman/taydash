@@ -1,1 +1,1 @@
-https://img.shields.io/github/workflow/status/taylorsweetman/taydash/Node.js%20CI
+[![GitHub Actions CI](https://github.com/taylorsweetman/taydash/workflows/Node.js%20CI/badge.svg?branch=main)](https://github.com/taylorsweetman/taydash/actions)
