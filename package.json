@@ -2,6 +2,21 @@
   "name": "taydash",
   "version": "1.0.4",
   "description": "Helpful utility functions",
+  "keywords": [
+    "utility functions",
+    "functional programming",
+    "functional",
+    "object iteration",
+    "object traversal"
+  ],
+  "homepage": "https://github.com/taylorsweetman/taydash#readme",
+  "bugs": {
+    "url": "https://github.com/taylorsweetman/taydash/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorsweetman/taydash.git"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
