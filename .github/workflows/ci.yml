@@ -39,5 +39,8 @@ jobs:
         name: Clean Install
         run: npm ci
 
+      - name: Install
+        run: npm i
+
       - name: Validate package
         run: npm run validate
