@@ -30,16 +30,11 @@ jobs:
             ${{ runner.os }}-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit == false }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm list
-
-      - name: Use Node.js ${{ matrix.node-version }}
+        name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+        run: npm ci
 
       - name: Validate package
-        uses: actions/setup-node@v3
-      - run: npm run validate
+        run: npm run validate
