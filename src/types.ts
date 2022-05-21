@@ -1,14 +1,14 @@
-export type JSONValue =
-  | string
-  | number
-  | boolean
-  | JSONObject
-  | JSONArray
-  | null
+export type JSONLeaf = string | number | boolean | null
 
-export type JSONNodeless = string | number | boolean | null
+export type JSONObject = {
+  [x: string]: JSONValue
+}
 
-export const isNodeless = (elem: JSONValue): elem is JSONNodeless => {
+export type JSONArray = Array<JSONValue>
+
+export type JSONValue = JSONLeaf | JSONObject | JSONArray
+
+export const isLeaf = (elem: JSONValue): elem is JSONLeaf => {
   if (elem === null) return true
   if (
     typeof elem === 'string' ||
@@ -19,9 +19,3 @@ export const isNodeless = (elem: JSONValue): elem is JSONNodeless => {
 
   return false
 }
-
-export type JSONObject = {
-  [x: string]: JSONValue
-}
-
-export type JSONArray = Array<JSONValue>

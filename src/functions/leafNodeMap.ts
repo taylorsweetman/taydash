@@ -1,4 +1,4 @@
-import { isNodeless, JSONArray, JSONObject, JSONValue } from '../types'
+import { isLeaf, JSONArray, JSONObject, JSONValue } from '../types'
 import { isPlainObject, isArray, entries, pipe, reduce, map } from 'lodash/fp'
 
 const handleArray =
@@ -20,7 +20,7 @@ const handleObject =
 export const leafNodeMap =
   (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONValue): JSONValue => {
-    if (isNodeless(iterable)) return func(iterable)
+    if (isLeaf(iterable)) return func(iterable)
 
     const leafNodeMapWithAppliedFunction = leafNodeMap(func)
 
