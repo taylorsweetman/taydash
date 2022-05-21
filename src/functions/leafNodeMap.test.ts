@@ -1,4 +1,4 @@
-import { JSONArray, JSONNodeless, JSONObject, JSONValue } from '../types'
+import { JSONArray, JSONLeaf, JSONObject, JSONValue } from '../types'
 import { leafNodeMap } from './leafNodeMap'
 
 describe('leafNodeMap', () => {
@@ -11,8 +11,8 @@ describe('leafNodeMap', () => {
       ['hi', 'hi'],
       [null, null],
     ])(
-      'should apply function on nodeless iterables correctly: %s -> %s',
-      (iter: JSONNodeless, expected: JSONNodeless) => {
+      'should apply function on leaf iterables correctly: %s -> %s',
+      (iter: JSONLeaf, expected: JSONLeaf) => {
         expect(leafNodeMapIdentityFunc(iter)).toBe(expected)
       }
     )
@@ -53,8 +53,8 @@ describe('leafNodeMap', () => {
       ['hi', 1],
       [null, 1],
     ])(
-      'should apply function on nodeless iterables correctly: %s -> %s',
-      (iter: JSONNodeless, expected: JSONNodeless) => {
+      'should apply function on leaf iterables correctly: %s -> %s',
+      (iter: JSONLeaf, expected: JSONLeaf) => {
         expect(leafNodeMapWithToOne(iter)).toBe(expected)
       }
     )
@@ -72,7 +72,7 @@ describe('leafNodeMap', () => {
     it.each([
       [{ hello: { world: [true, 1, 'a'] } }, { hello: { world: [1, 1, 1] } }],
       [
-        [{ hello: { world: true } }, 1],
+        [{ hello: { world: true } }, 'hi'],
         [{ hello: { world: 1 } }, 1],
       ],
     ])(
