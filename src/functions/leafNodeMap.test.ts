@@ -48,7 +48,6 @@ describe('leafNodeMap', () => {
 
   describe('with to one function', () => {
     const toOne = () => 1
-    const leafNodeMapWithToOne = leafNodeMap(toOne)
 
     it.each([
       [1, 1],
@@ -58,7 +57,7 @@ describe('leafNodeMap', () => {
     ])(
       'should apply function on leaf iterables correctly: %s -> %s',
       (iter: JSONLeaf, expected: JSONLeaf) => {
-        expect(leafNodeMapWithToOne(iter)).toBe(expected)
+        expect(leafNodeMap(toOne)(iter)).toBe(expected)
         expect(_leafNodeMap(toOne, iter)).toBe(expected)
       }
     )
@@ -69,7 +68,7 @@ describe('leafNodeMap', () => {
     ])(
       'should return empty object or list when receiving empty object or list: %s -> %s',
       (iter: JSONObject | JSONArray, expected: JSONObject | JSONArray) => {
-        expect(leafNodeMapWithToOne(iter)).toEqual(expected)
+        expect(leafNodeMap(toOne)(iter)).toEqual(expected)
         expect(_leafNodeMap(toOne, iter)).toEqual(expected)
       }
     )
@@ -83,7 +82,7 @@ describe('leafNodeMap', () => {
     ])(
       'should correctly use applied functions on deeply nested JSONValue: %j -> %j',
       (iter: JSONValue, expected: JSONValue) => {
-        expect(leafNodeMapWithToOne(iter)).toEqual(expected)
+        expect(leafNodeMap(toOne)(iter)).toEqual(expected)
         expect(_leafNodeMap(toOne, iter)).toEqual(expected)
       }
     )
