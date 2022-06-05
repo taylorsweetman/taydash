@@ -1,6 +1,6 @@
 {
   "name": "taydash",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Helpful utility functions",
   "keywords": [
     "utility functions",
@@ -23,7 +23,7 @@
     "compile": "tsc --noEmit",
     "build": "tsc",
     "lint": "eslint --max-warnings 0 'src/**/*.ts'",
-    "test": "jest",
+    "test": "jest --coverage",
     "validate": "npm run lint && npm run compile && npm run test && npm audit",
     "prep": "npm i && npm run build && npm run validate"
   },
