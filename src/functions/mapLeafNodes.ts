@@ -1,5 +1,5 @@
 import { isLeaf, JSONArray, JSONObject, JSONValue } from '../types'
-import { isPlainObject, isArray, entries, pipe, reduce, map } from 'lodash/fp'
+import { isArray, entries, pipe, reduce, map } from 'lodash/fp'
 
 const mapArray =
   (func: (a: JSONValue) => JSONValue) =>
@@ -24,9 +24,7 @@ export const mapLeafNodes =
 
     if (isArray(iterable)) return mapArray(func)(iterable)
 
-    if (isPlainObject(iterable)) return mapObject(func)(iterable)
-
-    return null
+    return mapObject(func)(iterable)
   }
 
 export const _mapLeafNodes = (
