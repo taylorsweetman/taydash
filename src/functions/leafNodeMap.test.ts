@@ -1,9 +1,10 @@
 import { JSONArray, JSONLeaf, JSONObject, JSONValue } from '../types'
-import { leafNodeMap } from './leafNodeMap'
+import { identity } from 'lodash/fp'
+import { _leafNodeMap, leafNodeMap } from './leafNodeMap'
 
 describe('leafNodeMap', () => {
   describe('with identity function', () => {
-    const leafNodeMapIdentityFunc = leafNodeMap((x) => x)
+    const leafNodeMapIdentityFunc = leafNodeMap(identity)
 
     it.each([
       [1, 1],
@@ -14,6 +15,7 @@ describe('leafNodeMap', () => {
       'should apply function on leaf iterables correctly: %s -> %s',
       (iter: JSONLeaf, expected: JSONLeaf) => {
         expect(leafNodeMapIdentityFunc(iter)).toBe(expected)
+        expect(_leafNodeMap(identity, iter)).toBe(expected)
       }
     )
 
@@ -24,6 +26,7 @@ describe('leafNodeMap', () => {
       'should return empty object or list when receiving empty object or list: %s -> %s',
       (iter: JSONObject | JSONArray, expected: JSONObject | JSONArray) => {
         expect(leafNodeMapIdentityFunc(iter)).toEqual(expected)
+        expect(_leafNodeMap(identity, iter)).toEqual(expected)
       }
     )
 
@@ -40,12 +43,14 @@ describe('leafNodeMap', () => {
       'should correctly use applied functions on deeply nested JSONValue: %j -> %j',
       (iter: JSONValue, expected: JSONValue) => {
         expect(leafNodeMapIdentityFunc(iter)).toEqual(expected)
+        expect(_leafNodeMap(identity, iter)).toEqual(expected)
       }
     )
   })
 
   describe('with to one function', () => {
-    const leafNodeMapWithToOne = leafNodeMap(() => 1)
+    const toOne = () => 1
+    const leafNodeMapWithToOne = leafNodeMap(toOne)
 
     it.each([
       [1, 1],
@@ -56,6 +61,7 @@ describe('leafNodeMap', () => {
       'should apply function on leaf iterables correctly: %s -> %s',
       (iter: JSONLeaf, expected: JSONLeaf) => {
         expect(leafNodeMapWithToOne(iter)).toBe(expected)
+        expect(_leafNodeMap(toOne, iter)).toBe(expected)
       }
     )
 
@@ -66,6 +72,7 @@ describe('leafNodeMap', () => {
       'should return empty object or list when receiving empty object or list: %s -> %s',
       (iter: JSONObject | JSONArray, expected: JSONObject | JSONArray) => {
         expect(leafNodeMapWithToOne(iter)).toEqual(expected)
+        expect(_leafNodeMap(toOne, iter)).toEqual(expected)
       }
     )
 
@@ -79,6 +86,7 @@ describe('leafNodeMap', () => {
       'should correctly use applied functions on deeply nested JSONValue: %j -> %j',
       (iter: JSONValue, expected: JSONValue) => {
         expect(leafNodeMapWithToOne(iter)).toEqual(expected)
+        expect(_leafNodeMap(toOne, iter)).toEqual(expected)
       }
     )
   })

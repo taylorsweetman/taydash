@@ -28,3 +28,8 @@ export const leafNodeMap =
 
     return null
   }
+
+export const _leafNodeMap = (
+  func: (a: JSONValue) => JSONValue,
+  iterable: JSONValue
+): JSONValue => leafNodeMap(func)(iterable)
