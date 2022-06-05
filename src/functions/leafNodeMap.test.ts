@@ -4,8 +4,6 @@ import { _leafNodeMap, leafNodeMap } from './leafNodeMap'
 
 describe('leafNodeMap', () => {
   describe('with identity function', () => {
-    const leafNodeMapIdentityFunc = leafNodeMap(identity)
-
     it.each([
       [1, 1],
       [true, true],
@@ -14,7 +12,7 @@ describe('leafNodeMap', () => {
     ])(
       'should apply function on leaf iterables correctly: %s -> %s',
       (iter: JSONLeaf, expected: JSONLeaf) => {
-        expect(leafNodeMapIdentityFunc(iter)).toBe(expected)
+        expect(leafNodeMap(identity)(iter)).toBe(expected)
         expect(_leafNodeMap(identity, iter)).toBe(expected)
       }
     )
@@ -25,7 +23,7 @@ describe('leafNodeMap', () => {
     ])(
       'should return empty object or list when receiving empty object or list: %s -> %s',
       (iter: JSONObject | JSONArray, expected: JSONObject | JSONArray) => {
-        expect(leafNodeMapIdentityFunc(iter)).toEqual(expected)
+        expect(leafNodeMap(identity)(iter)).toEqual(expected)
         expect(_leafNodeMap(identity, iter)).toEqual(expected)
       }
     )
@@ -42,7 +40,7 @@ describe('leafNodeMap', () => {
     ])(
       'should correctly use applied functions on deeply nested JSONValue: %j -> %j',
       (iter: JSONValue, expected: JSONValue) => {
-        expect(leafNodeMapIdentityFunc(iter)).toEqual(expected)
+        expect(leafNodeMap(identity)(iter)).toEqual(expected)
         expect(_leafNodeMap(identity, iter)).toEqual(expected)
       }
     )
