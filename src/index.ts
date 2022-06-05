@@ -1,4 +1,4 @@
-export { leafNodeMap } from './functions/leafNodeMap'
+export { leafNodeMap, _leafNodeMap } from './functions/leafNodeMap'
 export {
   type JSONArray,
   type JSONLeaf,

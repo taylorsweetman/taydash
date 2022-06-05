@@ -13,7 +13,24 @@ A collection of utility functions and types which have proved useful, and are la
 npm i taydash
 ```
 
-## Bestiary
+### Curried vs Uncurried Functions
+
+Each exported function of this library is [curried](https://en.wikipedia.org/wiki/Currying) by default.
+
+For convenience, each curried function will have a corresponding uncurried function, prefixed with `_`.
+
+For example:
+
+```typescript
+const addOne = (num) => num + 1
+const curried = leafNodeMap(addOne)(1)
+const uncurried = _leafNodeMap(addOne, 1)
+const sameResult = curried === uncurried
+console.log(sameResult)
+// true
+```
+
+## Highlights
 
 ### [leafNodeMap](https://github.com/taylorsweetman/taydash/blob/main/src/functions/leafNodeMap.ts)
 
