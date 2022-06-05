@@ -1,18 +1,18 @@
 import { isLeaf, JSONArray, JSONObject, JSONValue } from '../types'
 import { isPlainObject, isArray, entries, pipe, reduce, map } from 'lodash/fp'
 
-const handleArray =
-  (mapWithAppliedFunc: (a: JSONValue) => JSONValue) =>
+const mapArray =
+  (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONArray): JSONArray =>
-    map(mapWithAppliedFunc)(iterable)
+    map(leafNodeMap(func))(iterable)
 
-const handleObject =
-  (mapWithAppliedFunc: (a: JSONValue) => JSONValue) =>
+const mapObject =
+  (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONObject): JSONObject =>
     pipe(
       entries,
       reduce(
-        (accum, [key, val]) => ({ ...accum, [key]: mapWithAppliedFunc(val) }),
+        (accum, [key, val]) => ({ ...accum, [key]: leafNodeMap(func)(val) }),
         {} as JSONObject
       )
     )(iterable)
@@ -22,13 +22,9 @@ export const leafNodeMap =
   (iterable: JSONValue): JSONValue => {
     if (isLeaf(iterable)) return func(iterable)
 
-    const leafNodeMapWithAppliedFunction = leafNodeMap(func)
+    if (isArray(iterable)) return mapArray(func)(iterable)
 
-    if (isArray(iterable))
-      return handleArray(leafNodeMapWithAppliedFunction)(iterable)
-
-    if (isPlainObject(iterable))
-      return handleObject(leafNodeMapWithAppliedFunction)(iterable)
+    if (isPlainObject(iterable)) return mapObject(func)(iterable)
 
     return null
   }
