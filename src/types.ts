@@ -19,3 +19,5 @@ export const isLeaf = (elem: JSONValue): elem is JSONLeaf => {
 
   return false
 }
+
+export type Maybe<T> = T | null
