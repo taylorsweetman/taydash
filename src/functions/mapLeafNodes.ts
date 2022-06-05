@@ -4,7 +4,7 @@ import { isPlainObject, isArray, entries, pipe, reduce, map } from 'lodash/fp'
 const mapArray =
   (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONArray): JSONArray =>
-    map(leafNodeMap(func))(iterable)
+    map(mapLeafNodes(func))(iterable)
 
 const mapObject =
   (func: (a: JSONValue) => JSONValue) =>
@@ -12,12 +12,12 @@ const mapObject =
     pipe(
       entries,
       reduce(
-        (accum, [key, val]) => ({ ...accum, [key]: leafNodeMap(func)(val) }),
+        (accum, [key, val]) => ({ ...accum, [key]: mapLeafNodes(func)(val) }),
         {} as JSONObject
       )
     )(iterable)
 
-export const leafNodeMap =
+export const mapLeafNodes =
   (func: (a: JSONValue) => JSONValue) =>
   (iterable: JSONValue): JSONValue => {
     if (isLeaf(iterable)) return func(iterable)
@@ -29,7 +29,7 @@ export const leafNodeMap =
     return null
   }
 
-export const _leafNodeMap = (
+export const _mapLeafNodes = (
   func: (a: JSONValue) => JSONValue,
   iterable: JSONValue
-): JSONValue => leafNodeMap(func)(iterable)
+): JSONValue => mapLeafNodes(func)(iterable)

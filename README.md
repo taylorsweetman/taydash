@@ -23,8 +23,8 @@ For example:
 
 ```typescript
 const addOne = (num) => num + 1
-const curried = leafNodeMap(addOne)(1)
-const uncurried = _leafNodeMap(addOne, 1)
+const curried = mapLeafNodes(addOne)(1)
+const uncurried = _mapLeafNodes(addOne, 1)
 const sameResult = curried === uncurried
 console.log(sameResult)
 // true
@@ -32,13 +32,13 @@ console.log(sameResult)
 
 ## Highlights
 
-### [leafNodeMap](https://github.com/taylorsweetman/taydash/blob/main/src/functions/leafNodeMap.ts)
+### [mapLeafNodes](https://github.com/taylorsweetman/taydash/blob/main/src/functions/mapLeafNodes.ts)
 
 - Curried function which iterates over a `JSONValue` (JSON style object, array, or primitive) and applies a passed function to each leaf node of the value.
 
 ```typescript
 const addOne = (num) => num + 1
-const result = leafNodeMap(addOne)({ num: 0, arr: [1, 2, 3] })
+const result = mapLeafNodes(addOne)({ num: 0, arr: [1, 2, 3] })
 console.log(result)
 // { num: 1, arr: [ 2, 3, 4 ] }
 ```
