@@ -25,7 +25,8 @@
     "lint": "eslint --max-warnings 0 'src/**/*.ts'",
     "test": "jest --coverage",
     "validate": "npm run lint && npm run compile && npm run test && npm audit",
-    "prep": "npm i && npm run build && npm run validate"
+    "preversion": "npm ci && npm run validate && npm run build",
+    "postversion": "git push && git push --tags"
   },
   "author": "Taylor Sweetman",
   "license": "MIT",
