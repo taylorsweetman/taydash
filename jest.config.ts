@@ -4,6 +4,6 @@ export default async (): Promise<Config.InitialOptions> => {
   return {
     preset: 'ts-jest',
     verbose: true,
-    testMatch: ['**/src/**/*test.ts'],
+    testMatch: ['**/test/**/*test.ts'],
   }
 }

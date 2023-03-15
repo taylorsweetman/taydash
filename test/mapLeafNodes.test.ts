@@ -1,6 +1,6 @@
-import { JSONArray, JSONLeaf, JSONObject, JSONValue } from '../types'
+import { JSONArray, JSONLeaf, JSONObject, JSONValue } from '../src/types'
 import { identity } from 'lodash/fp'
-import { _mapLeafNodes, mapLeafNodes } from './mapLeafNodes'
+import { _mapLeafNodes, mapLeafNodes } from '../src/functions/mapLeafNodes'
 
 describe('mapLeafNodes', () => {
   describe('with identity function', () => {

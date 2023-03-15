@@ -1,4 +1,4 @@
-import { roundIfNum, _roundIfNum } from './roundIfNum'
+import { roundIfNum, _roundIfNum } from '../src/functions/roundIfNum'
 
 describe('roundIfNum', () => {
   it.each([
